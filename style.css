@@ -1,0 +1,157 @@
+/* ==========================================================================
+   1. СБРОС СТИЛЕЙ И ГЛОБАЛЬНЫЕ НАСТРОЙКИ
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Гарантирует правильный расчет размеров окон */
+}
+
+body {
+  background-color: #1a1a1a; /* Глубокий темный фон в стиле Rust */
+  color: #e0e0e0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   2. ШАПКА САЙТА (HEADER)
+   ========================================================================== */
+.header {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+.header__title {
+  font-size: clamp(1.8rem, 4vw, 3.5rem); /* Идеальный размер на любых экранах */
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.header__title--red {
+  color: #ff3333; /* Яркий постапокалиптический красный */
+  text-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+}
+
+.header__text {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #999999;
+}
+
+.header__hr {
+  width: 100%;
+  height: 3px;
+  background-color: #ff3333;
+  margin-top: 25px;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.5); /* Линия теперь слегка светится */
+}
+
+/* ==========================================================================
+   3. ГЛАВНЫЙ КОНТЕНТ И СЕТКА (MAIN & FLEX)
+   ========================================================================== */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Новые текстовые блоки для твоих будущих якорей */
+.main h2 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin: 50px 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main p {
+  color: #b0b0b0;
+  max-width: 800px;
+  margin-bottom: 30px;
+  font-size: 1.05rem;
+}
+
+/* Обертка-контейнер для карточек */
+.main__video-container {
+  display: flex;
+  flex-wrap: wrap; /* Разрешает карточкам переноситься на новую строку */
+  justify-content: center; /* Центрирует карточки, если их мало в ряду */
+  gap: 25px; /* Одинаковое расстояние между карточками во все стороны */
+  list-style: none;
+  padding: 0;
+}
+
+/* Элемент карточки */
+.main__video {
+  /* flex: grow shrink basis. Карточка займет от 300px и будет гибко расти */
+  flex: 1 1 300px;
+  max-width: 380px; /* Защита: карточки не станут гигантскими на больших мониторах */
+  background-color: #242424; /* Чуть светлее фона для объема */
+  border-radius: 12px;
+  overflow: hidden; /* Обрезает углы видео под border-radius карточки */
+  border: 1px solid rgba(255, 51, 51, 0.2); /* Едва заметная красная рамка */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding-bottom: 15px;
+
+  /* Анимация: все изменения (плавный подъем и свечение) займут 0.3 секунды */
+  transition:
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Эффект наведения мыши (Hover) */
+.main__video:hover {
+  transform: translateY(-6px); /* Карточка плавно «подпрыгивает» вверх */
+  border-color: rgba(255, 51, 51, 0.8); /* Рамка становится яркой */
+  box-shadow:
+    0 10px 30px rgba(255, 51, 51, 0.25),
+    /* Внешнее неоновое облако */ 0 0 15px rgba(255, 51, 51, 0.2);
+}
+
+/* Видео внутри карточки */
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Заменяет height: auto. Видео ВСЕГДА будет идеальной формы */
+  display: block;
+  border: none;
+}
+
+/* Заголовки внутри карточек */
+.main__video h3 {
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 15px 10px 5px 10px;
+  /* Если название слишком длинное, оно превратится в три точки (...) и не сломает верстку */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Текст внутри карточек (Дата / Автор) */
+.main__video p {
+  font-size: 0.85rem;
+  color: #888888;
+  margin-bottom: 0; /* Сбрасываем нижний отступ глобального параграфа */
+  padding: 0 10px;
+}
+
+/* ==========================================================================
+   4. ПОДВАЛ САЙТА (FOOTER)
+   ========================================================================== */
+.footer {
+  margin-top: 80px;
+  padding: 20px 0;
+  text-align: center;
+  color: #555555;
+  font-size: 0.9rem;
+  border-top: 1px solid #2d2d2d;
+}
